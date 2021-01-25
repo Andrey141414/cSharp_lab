@@ -8,112 +8,50 @@ namespace Program
 {
     class Program
     {
-        static void Main(string[] args)
+        public struct Test
         {
-            String[] NAMES = { "Пешка", "Конь", "Слон", "Ладья", "Ферзь" };
-            Chess_figure[] MAS = new Chess_figure[10];
-
-            for (int i = 0; i < 10; i++)
+            public int integer;
+            public String str;
+            public void structInit(String str, int integer)
             {
-                MAS[i] = new Chess_figure();
-                switch (i % 5)
-                {
-                    case 0: { MAS[i].Init(1, NAMES[i % 5]); }; break;
-                    case 1: { MAS[i].Init(3, NAMES[i % 5]); }; break;
-                    case 2: { MAS[i].Init(3, NAMES[i % 5]); }; break;
-                    case 3: { MAS[i].Init(5, NAMES[i % 5]); }; break;
-                    case 4: { MAS[i].Init(9, NAMES[i % 5]); }; break;
-                }
-
+                this.integer = integer;
+                this.str = str;
             }
-
-
-
-            int N = 10;
-            for (int i = 0; i < N; i++)
+            public void structDisplay()
             {
-                MAS[i].Display();
+                Console.WriteLine($"{this.str} {this.integer}\n");
             }
+        }
+        public static void Main(string[] args)
+        {
 
+            // В c# при присваивании структуры присваивается значение полей,
+            //если далее изменится один объект, то на второй это не повлияет
+            Test a = new Test();
+            Test b = new Test();
+            a.structInit("First struct", 1);
+            a.structDisplay();
+            b = a;
+            a.structDisplay();
+            b.structDisplay();
 
+            b.structInit("Second struct", 2);
 
-            for (int i = 0; i < N; i++)
-            {
+            a.structDisplay();
+            b.structDisplay();
 
-                String a = MAS[i].Name;
+            Console.WriteLine("\n\n\nClasses\n\n");
+            //В c# объекты - ссылки, при присваивании объекту присваивается ссылка,
+            //если далее изменится один объект изменится и второй
+            Chess_figure a1 = new Chess_figure();
+            Chess_figure b1 = new Chess_figure();
+            a1.Init(1, "Firest class");
+            b1 = a1;
 
-                for (int j = i + 1; j < N + 1; j++)
-                {
-                    String b = MAS[j].Name;
-                    if (String.Compare(a, b) == 0)
-                    {
-                        for (int z = j; z < N - 1; z++)
-                        {
-                            MAS[z] = MAS[z + 1];
-                        }
-                        N -= 1;
-                    }
-                }
-            }
+            b1.value++;
 
-            Console.WriteLine("\n\nМассив после обработки\n\n");
-            for (int i = 0; i < N; i++)
-            {
-                MAS[i].Display();
-            }
-
-
-
-
-            Console.WriteLine("\n\n");
-            Chess_figure fig1 = new Chess_figure();
-            fig1.Init(3, "Slon");
-            Chess_figure fig2 = new Chess_figure();
-            fig2.Init(3, "Queen");
-
-
-            String str;
-            //Параметр не инициолизирован
-            fig1.getNameout(out str);
-            Console.WriteLine("out    ");
-            Console.WriteLine(str);
-
-            //Параметр инициолизирован
-            fig2.getNameref(ref str);
-            Console.WriteLine("ref    ");
-            Console.WriteLine(str);
-
-
-
-
-
-
-            //Перегрузка операторов
-            Chess_figure Queen = new Chess_figure();
-            Chess_figure Ladya = new Chess_figure();
-            Chess_figure Slon = new Chess_figure();
-
-            Ladya.Init(5, "Ладья");
-            Console.WriteLine("\n\n");
-            Console.WriteLine("Ладья");
-            Ladya.Display();
-
-
-            Slon.Init(5, "Слон");
-            Console.WriteLine("\n\n");
-            Console.WriteLine("Слон");
-            Slon.Display();
-
-            Console.WriteLine("\n\n");
-            Console.WriteLine("Слон + Ладья");
-            Queen = Ladya + Slon;
-            Queen.Display();
-
-            Queen++;
-            Console.WriteLine("\n\n");
-            Queen.Display();
-            //test
-
+            a1.Display();
+            b1.Display();
         }
     }
 }
