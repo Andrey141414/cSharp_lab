@@ -112,7 +112,7 @@ namespace Program
             Queen++;
             Console.WriteLine("\n\n");
             Queen.Display();
-
+            //test
 
         }
     }
