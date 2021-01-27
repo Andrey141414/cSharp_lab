@@ -24,81 +24,36 @@ namespace Program
                 name = value;
             }
         }
-
+        public static int quantity;
         public int value;
         public bool pawn;
 
-        public static Chess_figure operator +(Chess_figure a,Chess_figure b)
+        static public void  pause()
         {
-            Chess_figure c = new Chess_figure();
-            c.name = a.name + b.name;
-            c.value = a.value + b.value;
-            c.pawn = true;
-            return c;
+            Console.WriteLine("\n");
+            Console.ReadKey();
+            Console.Clear();
         }
-
-        public static Chess_figure operator ++(Chess_figure a)
+        static public void cut()
         {
-            Chess_figure c = new Chess_figure();
-            c.name = "King";
-            c.value = 100;
-            return c;
+           
+                --quantity;
+           
         }
-        public void Read()
+        static public void quantityDisplay()
         {
-
-            int vibor;
-            Console.WriteLine("Название фигуры");
-            for (int i = 0; i < 5; i++)
+            if (quantity > 0)
             {
-                Console.WriteLine($"{i + 1}  {NAMES[i]}");
-
+                Console.WriteLine($"{ "You have"}    { quantity} { "figures\n"}");
             }
-
-
-            vibor = Convert.ToInt32(Console.ReadLine());
-
-            name = NAMES[vibor - 1];
-            switch (vibor)
-            {
-                case 1: { value = 1; pawn = true; } break;
-                case 2: { value = 3; } break;
-                case 3: { value = 3; } break;
-                case 4: { value = 5; } break;
-                case 5: { value = 9; } break;
-            }
-
-
-        }
-
-        //Использование this
-        public void Init(int value, String name)
-        {
-            this.value = value;
-            this.name = name;
-            if (this.name == NAMES[0])
-                pawn = true;
             else
-                pawn = false;
+            {
+               Console.WriteLine( "You lose!!!\n");
+            }
         }
 
 
-        public void Display()
-        {
-            Console.WriteLine($"{name} Ценность {value}");
-        }
-
-
-
-
-        public void getNameref(ref String name)
-        {
-            name = this.name;
-        }
-        public void getNameout(out String name)
-        {
-            name = this.name;
-        }
+      
     }
 }
 
