@@ -10,35 +10,35 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            
 
-            int N = 10;
-            Chess_figure[] MAS = new Chess_figure[N];
-            try
-            {
-                for (int i = 0; i < N + 1; i++)
-                {
-                    Chess_figure buff = new Chess_figure("Ladya");
-                    MAS[i] = buff;
-                }
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine("Неправильный индекс массива");
-            }
-            catch (Exception ex)
-            {
-                string s;
-                s = ex.Message;             // s="Аргумент=0"
-                Console.WriteLine(s);
-                Console.ReadKey();
-                System.Environment.Exit(0);
 
-            }
+			const int N = 2;
+			const int M = 8;
+			Chess_figure[,] MAS = new Chess_figure[N,M];
+			for (int i = 0; i < M; i++)
+			{
+				Chess_figure a = new Chess_figure("Pawn");
+				MAS[1,i] = a;
+			}
 
-            //в объекте chess_figure, value>0
-            Chess_figure a = new Chess_figure("Figure", -5);
+			MAS[0,0] = new Chess_figure("Ladya");
+			MAS[0,1] = new Chess_figure("Kon");
+			MAS[0,2] = new Chess_figure("Slon");
+			MAS[0,3] = new Chess_figure("Queen");
+			MAS[0,4] = new Chess_figure("King");
+			MAS[0,5] = new Chess_figure("Slon");
+			MAS[0,6] = new Chess_figure("Kon");
+			MAS[0,7] = new Chess_figure("Ladya");
+			for (int i = 0; i < N; i++)
+			{
+				for (int j = 0; j < M; j++)
+				{
+					Console.Write($"\t {MAS[i,j].name}");
+				}
+				Console.WriteLine("\n");
+			}
 
-        }
-    }
+
+		}
+	}
 }

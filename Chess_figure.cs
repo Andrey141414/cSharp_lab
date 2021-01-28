@@ -10,17 +10,13 @@ namespace Program
     {
         private String[] NAMES = { "Пешка", "Конь", "Слон", "Ладья", "Ферзь" };
 
-        private String name;
+        public String name;
         public int value;
         public bool pawn;
 
         public Chess_figure(String name, int value)
         {
-            if (value <= 0)
-            {
-                Exception ex;
-                throw ex = new Exception("Значение < 0");
-            }
+            
             this.name = name;
             this.value = value;
         }
