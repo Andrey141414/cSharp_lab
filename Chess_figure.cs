@@ -11,49 +11,37 @@ namespace Program
         private String[] NAMES = { "Пешка", "Конь", "Слон", "Ладья", "Ферзь" };
 
         private String name;
-        public String Name
-        {
-            //Можем получить значение вне класса 
-            get
-            {
-                return name;
-            }
-            //Не можем присвоить значение вне класса 
-            private set
-            {
-                name = value;
-            }
-        }
-        public static int quantity;
         public int value;
         public bool pawn;
 
-        static public void  pause()
+        public Chess_figure(String name, int value)
         {
-            Console.WriteLine("\n");
-            Console.ReadKey();
-            Console.Clear();
-        }
-        static public void cut()
-        {
-           
-                --quantity;
-           
-        }
-        static public void quantityDisplay()
-        {
-            if (quantity > 0)
+            if (value <= 0)
             {
-                Console.WriteLine($"{ "You have"}    { quantity} { "figures\n"}");
+                Exception ex;
+                throw ex = new Exception("Значение < 0");
             }
-            else
-            {
-               Console.WriteLine( "You lose!!!\n");
-            }
+            this.name = name;
+            this.value = value;
         }
 
+        public Chess_figure(String name)
+        {
+            this.name = name;
+            value = 3;
+        }
 
-      
+        public Chess_figure()
+        {
+            this.name = "King";
+            this.value = 10;
+        }
+
+        public void Display()
+        {
+            Console.WriteLine($"{name} Ценность {value}");
+        }
+
     }
 }
 

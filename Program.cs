@@ -10,16 +10,35 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Chess_figure.quantity = 16;
             
-            do
+
+            int N = 10;
+            Chess_figure[] MAS = new Chess_figure[N];
+            try
             {
-                int ch;
-                Console.ReadKey(true);
-                Chess_figure.cut();
-                Chess_figure.quantityDisplay();
-                //Chess_figure.pause();
-            } while (Chess_figure.quantity >= 0);
+                for (int i = 0; i < N + 1; i++)
+                {
+                    Chess_figure buff = new Chess_figure("Ladya");
+                    MAS[i] = buff;
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine("Неправильный индекс массива");
+            }
+            catch (Exception ex)
+            {
+                string s;
+                s = ex.Message;             // s="Аргумент=0"
+                Console.WriteLine(s);
+                Console.ReadKey();
+                System.Environment.Exit(0);
+
+            }
+
+            //в объекте chess_figure, value>0
+            Chess_figure a = new Chess_figure("Figure", -5);
+
         }
     }
 }
