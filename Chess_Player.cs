@@ -1,100 +1,89 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace Program
-//{
-//    class Chess_Player
-//    {
-//        private int numbers;
-//        private String PlayerName;
+namespace Program
+{
+    class Chess_Player :Sportsman,Done 
+       
+    {
+        public void win()
+        {
+            Console.WriteLine("Шахматист поставил мат");
+        }
+        public override void training()
+        {
+            Console.WriteLine("\nШахматист учит теорию дебютов\n");
+        }
 
-//        private int rank;
+         
 
+        private int numbers;
+        public int GetNumbers()
+        {
+            return numbers;
+        }
 
+        private String PlayerName;
+        public String GetName()
+        {
+            return PlayerName;
+        }
 
-
-//        public Chess_figure[] figures = new Chess_figure[16];
-//        public bool color = true;
-
-
-
-//        public void playerRead()
-//        {
-//            Console.WriteLine("Введите имя игрока");
-//            PlayerName = Console.ReadLine();
-
-
-//            Console.WriteLine("Введите разряд");
-//            rank = Convert.ToInt32(Console.ReadLine());
-
-//            Console.WriteLine("Введите колличество фигур");
-//            numbers = Convert.ToInt32(Console.ReadLine());
-
-//            for (int i = 0; i < numbers; i++)
-//            {
-//                figures[i] = new Chess_figure();
-//                Console.WriteLine("\tВыберите фигуру\nОсталось выбрать: {0}\n", numbers - i);
-//                figures[i].Read();
-
-//            }
-//        }
-
-
-//        public void playerInit(String Pn, int numb, Chess_figure[] cf, int razryad)
-//        {
-//            PlayerName = Pn;
-//            numbers = numb;
-//            for (int i = 0; i < numbers; i++)
-//            {
-//                figures[i] = cf[i];
-//            }
-//            rank = razryad;
-//            color = false;
-//        }
-
-
-//        public void playerDisplay()
-//        {
-//            Console.WriteLine(PlayerName);
-//            Console.WriteLine(rank);
-//            if (color)
-//                Console.WriteLine("Играет Белыми\n");
-//            else
-//                Console.WriteLine("Играет Чёрными\n");
-
-//            Console.WriteLine("Колличество фигур  {0}\n", numbers);
-//            Console.WriteLine("Фигуры:\n");
-//            for (int i = 0; i < numbers; i++)
-//            {
-
-//                Console.WriteLine("{0})", i + 1);
-//                figures[i].Display();
-//            }
-//        }
+        public int rank;
 
 
 
-//        public void playerCompare(Chess_Player player)
-//        {
-//            Console.WriteLine("{0} VS {1}\n", PlayerName, player.PlayerName);
+
+        public Chess_figure figures;
+        public bool color = true;
+
+        public void test()
+        {
+            Console.WriteLine("SuperClass\n");
+        }
 
 
-//            if (player.rank < rank)
-//            {
-//                Console.WriteLine(" Победил {0} ", player.PlayerName);
-//            }
-//            if (player.rank > rank)
-//            {
-//                Console.WriteLine(" Победил {0} ", PlayerName);
-//            }
-//            if (player.rank == rank)
-//            {
-//                Console.WriteLine(" Ничья \n");
-//            }
 
-//        }
-//    }
-//}
+
+        public  Chess_Player()
+        {
+            PlayerName = "Andrey";
+            numbers = 5;
+            figures = new Chess_figure();
+            rank = 1;
+            color = false;
+        }
+
+        public String ToString()
+        {
+            
+            return "\nName - " + this.GetName() + "\nNumbers of figures is " + this.GetNumbers() + "\nRank - " + rank + "\n" + "Фигура " + figures.ToString();
+        }
+
+
+
+
+        public void playerCompare(Chess_Player player)
+        {
+            Console.WriteLine("{0} VS {1}\n", PlayerName, player.PlayerName);
+
+
+            if (player.rank < rank)
+            {
+                Console.WriteLine(" Победил {0} ", player.PlayerName);
+            }
+            if (player.rank > rank)
+            {
+                Console.WriteLine(" Победил {0} ", PlayerName);
+            }
+            if (player.rank == rank)
+            {
+                Console.WriteLine(" Ничья \n");
+            }
+
+        }
+    }
+}

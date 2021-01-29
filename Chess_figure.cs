@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    class Chess_figure
+    class Chess_figure 
     {
         private String[] NAMES = { "Пешка", "Конь", "Слон", "Ладья", "Ферзь" };
 
@@ -33,11 +33,15 @@ namespace Program
             this.value = 10;
         }
 
-        public void Display()
+       
+        public String ToString()
         {
-            Console.WriteLine($"{name} Ценность {value}");
+            return name + "  Ценность   " + value + "  \n";
         }
-
-    }
+        
+    
+       
+    
+}
 }
 
